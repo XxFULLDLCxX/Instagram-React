@@ -8,13 +8,15 @@ export default function Post({ user, content, likes }) {
     let [like_number, setLikes] = useState(likes.number);
     let [animate, setAnimate] = useState(false);
 
-    const likePost = alternate => () => {
+    const likePost = alternate => event => {
         if (heart.includes('outline')) {
             like_number++;
             setLikes(like_number);
             setHeart("heart-sharp");
-            setAnimate(true);
-            setTimeout(() => setAnimate(false), 500);
+            if (event.type !== 'click') {
+                setAnimate(true);
+                setTimeout(() => setAnimate(false), 500);
+            }
         } else if (alternate) {
             like_number--;
             setLikes(like_number);
