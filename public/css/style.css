@@ -241,9 +241,12 @@ body {
 
 .sidebar {
   padding-top: 24px;
+  width: 293px;
+}
+
+.sidebar-content {
   position: sticky;
   top: 88px;
-  width: 293px;
 }
 
 .sidebar>.user {
