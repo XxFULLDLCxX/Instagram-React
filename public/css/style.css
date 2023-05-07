@@ -186,12 +186,25 @@ body {
   cursor: pointer;
 }
 
-.post ion-icon[name="heart-sharp"] {
-  color: red;
+.post .content {
+  position: relative;
 }
 
 .post .content img {
   width: 100%;
+}
+
+.post .content ion-icon[name="heart-sharp"] {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  margin: auto;
+  color: #fff;
+  font-size: 164px;
+  animation: heart-pulse 0.3s ease-in-out;
+  z-index: 3;
 }
 
 .post .ground .actions {
@@ -203,6 +216,10 @@ body {
 
 .post .ground .actions div:first-child ion-icon {
   margin-right: 6px;
+}
+
+.post .ground .actions ion-icon[name="heart-sharp"] {
+  color: red;
 }
 
 .post .ground .likes {
@@ -318,4 +335,26 @@ ion-icon {
   margin-left: 5px;
   padding-top: 5px;
   color: black;
+}
+
+@keyframes heart-pulse {
+  0% {
+    transform: scale(0.2);
+  }
+
+  25% {
+    transform: scale(0.8);
+  }
+
+  50% {
+    transform: scale(0.6);
+  }
+
+  75% {
+    transform: scale(0.4);
+  }
+
+  100% {
+    transform: scale(1);
+  }
 }

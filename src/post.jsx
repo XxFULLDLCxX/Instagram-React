@@ -6,11 +6,15 @@ const formatNumber = num => num.toLocaleString('en-US').replace(',', '.');
 export default function Post({ user, content, likes }) {
     let [heart, setHeart] = useState("heart-outline");
     let [like_number, setLikes] = useState(likes.number);
+    let [animate, setAnimate] = useState(false);
+
     const likePost = alternate => () => {
         if (heart.includes('outline')) {
             like_number++;
             setLikes(like_number);
             setHeart("heart-sharp");
+            setAnimate(true);
+            setTimeout(() => setAnimate(false), 500);
         } else if (alternate) {
             like_number--;
             setLikes(like_number);
@@ -33,6 +37,8 @@ export default function Post({ user, content, likes }) {
 
             <div className="content">
                 <img data-test="post-image" src={content.src} alt={content.alt} onDoubleClick={likePost(false)} />
+                {animate && <ion-icon name="heart-sharp"></ion-icon>}
+
             </div>
 
             <div className="ground">
